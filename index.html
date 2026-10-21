@@ -85,8 +85,25 @@
       border-bottom: 2px solid transparent;
     }
     .parts a[aria-current] { border-bottom-color: var(--primary); font-weight: 600; }
-    .parts span { color: var(--faint); }
-    .parts small { font-size: .8rem; }
+    .parts ul { position: relative; flex-wrap: wrap; }
+
+    /* ── VISITOR COUNTER (in the sticky nav, filled by counter.php) ── */
+    .parts .counter {
+      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+      display: flex; align-items: center; gap: .9rem; font-size: .85rem; color: var(--faint);
+    }
+    .parts .counter[hidden] { display: none; }
+    .parts .counter span { display: inline; padding: 0; color: inherit; border: 0; }
+    .counter::before {
+      content: ""; width: .45rem; height: .45rem; margin-left: -.45rem; border-radius: 50%; background: var(--secondary);
+      animation: live 2.4s ease-in-out infinite;
+    }
+    .counter b { font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; transition: color .8s; }
+    .counter b.bump { color: var(--primary); transition: none; }
+    @keyframes live { 50% { opacity: .25; } }
+    @media (max-width: 860px) {
+      .parts .counter { position: static; transform: none; width: 100%; justify-content: center; padding: 0 0 .5rem; margin-top: -.3rem; }
+    }
 
     /* ── PART HEADING ── */
     .part { padding: 3.5rem 0 1rem; }
@@ -182,6 +199,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .months a { transition: none; }
+      .counter::before { animation: none; }
     }
   </style>
 </head>
@@ -199,6 +217,10 @@
   <ul>
     <li><a href="#six" aria-current="true">ששת התרגילים המשניים</a></li>
     <li><a href="#eight">שמונת התרגילים</a></li>
+    <li class="counter" id="counter" title="מתעדכן בזמן אמת" hidden>
+      <span><b data-k="visitors">0</b> מבקרים</span>
+      <span><b data-k="visits">0</b> ביקורים</span>
+    </li>
   </ul>
 </nav>
 
@@ -610,6 +632,61 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     document.querySelectorAll('section.part').forEach(function (s) { io.observe(s); });
+  })();
+
+  // Visitor counter: record this view once, then poll so the numbers grow
+  // while the page is open. Stays hidden if counter.php cannot answer.
+  (function () {
+    var box = document.getElementById('counter');
+    var url = 'counter.php';
+    var shown = {};
+
+    function randomId() {
+      var a = new Uint8Array(16);
+      crypto.getRandomValues(a);
+      return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+    }
+
+    var vid;
+    try {
+      vid = localStorage.getItem('aip_vid');
+      if (!/^[a-f0-9]{32}$/.test(vid || '')) {
+        vid = randomId();
+        localStorage.setItem('aip_vid', vid);
+      }
+    } catch (e) {
+      vid = randomId();
+    }
+
+    function show(d) {
+      if (!d || typeof d.visitors !== 'number') return;
+      ['visitors', 'visits'].forEach(function (k) {
+        var el = box.querySelector('[data-k="' + k + '"]');
+        if (shown[k] !== undefined && d[k] > shown[k]) {
+          el.classList.add('bump');
+          setTimeout(function () { el.classList.remove('bump'); }, 50);
+        }
+        shown[k] = d[k];
+        el.textContent = d[k].toLocaleString('he-IL');
+      });
+      box.hidden = false;
+    }
+
+    function load(init) {
+      return fetch(url, init || { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(show)
+        .catch(function () {});
+    }
+
+    load({
+      method: 'POST',
+      cache: 'no-store',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ vid: vid })
+    });
+    setInterval(function () { if (!document.hidden) load(); }, 10000);
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) load(); });
   })();
 </script>
 

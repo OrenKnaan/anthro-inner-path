@@ -2,3 +2,9 @@
 ._*
 .idea/
 .vscode/
+
+# Counter data belongs in anthro-inner-path-private/ above public_html, never here.
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+salt
