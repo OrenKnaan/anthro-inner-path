@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הדרך הפנימית | ששת התרגילים המשניים של רודולף שטיינר</title>
+  <meta name="description" content="ששת התרגילים המשניים של רודולף שטיינר: שליטה במחשבה, יוזמה בפעולה, שוויון נפש, גישה חיובית, פתיחות תודעה ואיזון. חודש לכל תרגיל, בטקסט המלא.">
+  <link rel="canonical" href="https://orenknaan.co.il/anthro-inner-path/">
+  <link rel="icon" type="image/png" href="/clarity/assets/unity-logo.png">
+  <meta property="og:type"        content="article">
+  <meta property="og:url"         content="https://orenknaan.co.il/anthro-inner-path/">
+  <meta property="og:title"       content="הדרך הפנימית | ששת התרגילים המשניים">
+  <meta property="og:description" content="חודש לכל תרגיל: שליטה במחשבה, יוזמה בפעולה, שוויון נפש, גישה חיובית, פתיחות תודעה ואיזון.">
+  <meta property="og:locale"      content="he_IL">
+  <meta property="og:site_name"   content="אחדות - אורן כנען">
+
+  <!-- Same self-hosted Assistant + Noto Serif Hebrew as /clarity/, copied here so this folder stands on its own. -->
+  <link rel="preload" href="fonts/assistant-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/noto-serif-hebrew-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts/fonts.css">
+
+  <style>
+    /* ── TOKENS (from the orenknaan.co.il Elementor kit, as in /clarity/) ── */
+    :root {
+      --bg:        #E9EAE4;
+      --panel:     #F2F3EE;
+      --panel-2:   #E1E4DC;
+      --primary:   #8A3B4C;
+      --secondary: #3E6E7A;
+      --text:      #1F2A29;
+      --dark:      #16211F;
+      --line:      #C9CEC4;
+      --gold:      #8E6E34;
+      --faint:     #6f746d;
+      --fb: 'Assistant', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      --fd: 'Noto Serif Hebrew', 'Assistant', Georgia, serif;
+      --r: 6px;
+      --measure: 40rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 400 1.1875rem/1.85 var(--fb);
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--secondary); }
+    :focus-visible { outline: 2px solid var(--secondary); outline-offset: 3px; }
+    [id] { scroll-margin-top: 4.5rem; }
+
+    .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── HEADER ── */
+    .hero {
+      background: var(--dark);
+      color: #E9EAE4;
+      padding: 4.5rem 0 3.5rem;
+      text-align: center;
+    }
+    .hero .kicker {
+      font-size: .9rem; letter-spacing: .12em; color: #b9c2b8; margin: 0 0 1rem;
+    }
+    .hero h1 {
+      font: 600 clamp(2.2rem, 6vw, 3.2rem)/1.2 var(--fd);
+      margin: 0 0 1rem;
+    }
+    .hero p { margin: 0 auto; max-width: 32rem; color: #cfd6cd; font-size: 1.05rem; }
+
+    /* ── PART NAV (the six / the part still to come) ── */
+    .parts {
+      position: sticky; top: 0; z-index: 5;
+      background: rgba(233,234,228,.94);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+    }
+    .parts ul {
+      list-style: none; margin: 0 auto; padding: 0 1rem;
+      display: flex; justify-content: center; gap: .25rem; max-width: 56rem;
+    }
+    .parts a, .parts span {
+      display: block; padding: .9rem 1rem; font-size: 1rem; text-decoration: none; color: var(--text);
+      border-bottom: 2px solid transparent;
+    }
+    .parts a[aria-current] { border-bottom-color: var(--primary); font-weight: 600; }
+    .parts span { color: var(--faint); }
+    .parts small { font-size: .8rem; }
+
+    /* ── PART HEADING ── */
+    .part { padding: 3.5rem 0 1rem; }
+    .part-head { text-align: center; margin-bottom: 2.5rem; }
+    .part-head .num {
+      font: 500 .95rem var(--fb); color: var(--primary); letter-spacing: .1em; margin: 0 0 .4rem;
+    }
+    .part-head h2 { font: 600 clamp(1.8rem, 4.5vw, 2.4rem)/1.25 var(--fd); margin: 0 0 .5rem; }
+    .part-head .sub { margin: 0; color: var(--faint); }
+
+    /* ── MONTH TIMELINE ── */
+    .months {
+      list-style: none; padding: 0; margin: 0 auto 3rem; max-width: 56rem;
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: .5rem;
+      counter-reset: m;
+    }
+    .months a {
+      display: flex; flex-direction: column; align-items: center; gap: .25rem;
+      height: 100%; padding: .9rem .5rem; text-align: center; text-decoration: none; color: var(--text);
+      background: var(--panel); border: 1px solid var(--line); border-radius: var(--r);
+      transition: border-color .2s, transform .2s;
+    }
+    .months a:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .months b { font: 600 1.5rem/1 var(--fd); color: var(--primary); }
+    .months small { font-size: .78rem; color: var(--faint); }
+    .months span { font-size: .95rem; line-height: 1.35; }
+    @media (max-width: 720px) {
+      .months { grid-template-columns: repeat(3, 1fr); padding: 0 1rem; }
+    }
+
+    /* ── INTRO ── */
+    .intro p { margin: 0 0 1.2rem; }
+    .lead { font-weight: 600; }
+    blockquote {
+      margin: 1.5rem 0 2rem; padding: 1.25rem 1.5rem;
+      background: var(--panel); border-right: 3px solid var(--gold); border-radius: var(--r);
+      font: 400 1.08rem/1.9 var(--fd);
+    }
+    blockquote footer { margin-top: .75rem; font: .9rem var(--fb); color: var(--faint); }
+
+    /* ── EXERCISE ── */
+    .ex { padding: 3rem 0 1rem; border-top: 1px solid var(--line); margin-top: 2.5rem; }
+    .ex-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; }
+    .ex-head .n { font: 600 3.4rem/1 var(--fd); color: var(--primary); opacity: .85; }
+    .ex-head .month { margin: 0; font-size: .9rem; color: var(--faint); letter-spacing: .06em; }
+    .ex-head h3 { margin: 0; font: 600 1.7rem/1.3 var(--fd); }
+
+    .gist {
+      display: grid; gap: .5rem; margin: 0 0 1.8rem; padding: 1.1rem 1.3rem;
+      background: var(--panel-2); border-radius: var(--r); font-size: 1.02rem; line-height: 1.65;
+    }
+    .gist dl { display: grid; gap: .9rem; margin: 0; }
+    .gist dt { font-size: .8rem; font-weight: 700; letter-spacing: .08em; color: var(--secondary); }
+    .gist dd { margin: .1rem 0 0; }
+    .gist-label { font-size: .75rem; color: var(--faint); margin: 0; }
+
+    .ex p { margin: 0 0 1.2rem; }
+    .ex em, .intro em { font-style: normal; font-weight: 700; color: var(--primary); }
+    .carry {
+      font-size: 1rem; color: var(--faint); padding-right: 1rem; border-right: 2px solid var(--line);
+    }
+
+    /* ── CLOSING / PART TO COME ── */
+    .closing { margin-top: 3rem; padding: 2rem 1.75rem; background: var(--panel); border-radius: var(--r); }
+    .closing h3 { margin: 0 0 1rem; font: 600 1.4rem var(--fd); }
+    .closing p { margin: 0 0 1.1rem; }
+    .closing p:last-child { margin-bottom: 0; }
+
+    .later {
+      text-align: center; padding: 3rem 1.5rem; margin-bottom: 3rem;
+      border: 1px dashed var(--line); border-radius: var(--r); color: var(--faint);
+    }
+
+    .site-foot {
+      padding: 2.5rem 0 3rem; text-align: center; font-size: .92rem; color: var(--faint);
+      border-top: 1px solid var(--line);
+    }
+    .site-foot p { margin: 0 0 .4rem; }
+
+    @media (max-width: 520px) {
+      body { font-size: 1.0625rem; }
+      .ex-head .n { font-size: 2.6rem; }
+      .ex-head h3 { font-size: 1.45rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .months a { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">רודולף שטיינר · הדרך הפנימית</p>
+    <h1>תרגילים לדרך הפנימית</h1>
+    <p>הטקסטים המלאים, מסודרים לתרגול: תרגיל אחד בכל חודש, וכל תרגיל ממשיך ללוות את אלה שאחריו.</p>
+  </div>
+</header>
+
+<nav class="parts" aria-label="חלקי הדף">
+  <ul>
+    <li><a href="#six" aria-current="true">ששת התרגילים המשניים</a></li>
+    <li><span>חלק שני <small>(יתווסף בהמשך)</small></span></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ═══════════════ PART 1 · THE SIX SUBSIDIARY EXERCISES ═══════════════ -->
+  <section class="part" id="six" aria-labelledby="six-title">
+    <div class="wrap part-head">
+      <p class="num">חלק ראשון</p>
+      <h2 id="six-title">ששת התרגילים המשניים</h2>
+      <p class="sub">דרישות כלליות שכל מתלמד על השביל האוקולטי חייב להציב לפניו</p>
+    </div>
+
+    <ol class="months" aria-label="תרגיל לכל חודש">
+      <li><a href="#ex1"><b>1</b><small>חודש ראשון</small><span>שליטה במחשבה</span></a></li>
+      <li><a href="#ex2"><b>2</b><small>חודש שני</small><span>יוזמה בפעולה</span></a></li>
+      <li><a href="#ex3"><b>3</b><small>חודש שלישי</small><span>שוויון נפש</span></a></li>
+      <li><a href="#ex4"><b>4</b><small>חודש רביעי</small><span>גישה חיובית</span></a></li>
+      <li><a href="#ex5"><b>5</b><small>חודש חמישי</small><span>פתיחות תודעה</span></a></li>
+      <li><a href="#ex6"><b>6</b><small>חודש שישי</small><span>איזון</span></a></li>
+    </ol>
+
+    <div class="wrap">
+
+      <div class="intro">
+        <p>בספרו "מדע הנסתר בקוויו העיקריים" (בפרק "ידיעת העולמות העליונים", בקשר להתקדשות), מתאר שטיינר כדלהלן את התנאי המוקדם ההכרחי לפני כל תרגיל שהוא:</p>
+        <blockquote>
+          אנחנו יכולים על כל פנים להבין מכל זה, עד כמה הכרחי שהאדם לא יבקש להיכנס לעולם הרוחי עד אשר הוא למד והבין אמיתות בסיסיות מסוימות של העולם ההוא, על ידי הפעלה פשוטה של האינטליגנציה היומיומית שלו, שהתפתחה בעולם הפיזי. אם התפתחות רוחית מתנהלת על פי השביל הנכון, אזי, לפני שהוא שואף להיכנס לעולם העל-חושי, התלמיד כבר השתלט באמצעות האינטליגנציה הרגילה שלו על כל התכנים הקודמים של ספר זה.
+          <footer>רודולף שטיינר, "מדע הנסתר בקוויו העיקריים"</footer>
+        </blockquote>
+        <p class="lead">במה שיוצג כאן כלולים התנאים שחייבים להיות הבסיס של כל התפתחות אוקולטית. לא תיתכן שום התקדמות בחיים החיצוניים או הפנימיים מבלי שיוגשמו תנאים אלו.</p>
+        <p>כל תרגילי המדיטציה, הריכוז ותרגילים מסוג אחר הינם חסרי ערך, ובאמת, במובן מסוים מזיקים ממש, אם החיים אינם מעוצבים על פי תנאים אלה. אין בנמצא כוחות שניתן להחדירם מבחוץ לתוך האדם; מה שניתן לעשות הוא רק לאפשר את פיתוחם של הכוחות שכבר טמונים בו. הם אינם מתפתחים מעצמם עקב מעצורים חיצוניים ופנימיים שחוסמים את דרכם. המעצורים החיצוניים מסולקים באמצעות חוקי החיים שלהלן; המעצורים הפנימיים על ידי תרגול מתאים של מדיטציה, ריכוז וכו'.</p>
+      </div>
+
+      <!-- 1 -->
+      <article class="ex" id="ex1" aria-labelledby="ex1-title">
+        <div class="ex-head">
+          <span class="n" aria-hidden="true">1</span>
+          <div>
+            <p class="month">חודש ראשון</p>
+            <h3 id="ex1-title">שליטה במחשבה</h3>
+          </div>
+        </div>
+        <div class="gist">
+          <p class="gist-label">בתמצית, לתרגול</p>
+          <dl>
+          <div><dt>התרגול</dt><dd>לפחות 5 דקות ביום: להציב מחשבה אחת פשוטה וחסרת עניין (למשל סיכה) במרכז התודעה, ולקשר אליה ביוזמתך את כל מה שקשור אליה.</dd></div>
+          <div><dt>התחושה בגוף</dt><dd>תחושת יציבות וביטחון: למקד את החשיבה בראש ובאמצע עמוד השדרה, ולהזרים אליהם את התחושה.</dd></div>
+        </dl>
+        </div>
+        <p>התנאי הראשון הוא פיתוח של <em>מחשבה צלולה לגמרי</em>. לשם כך על האדם לחדול מהפיזור לכל עבר של מחשבותיו, ולו גם לזמן קצר מאוד במשך היממה: לפחות משך 5 דקות (יותר זמן, יותר טוב). הוא חייב להפוך לשליט בעולם המחשבות. אין הוא השליט של התנאים החיצוניים; עיסוקו, המסורת בה גדל, קשריו החברתיים ואפילו הגזע אליו הוא משתייך קובעים את מחשבותיו ואת אופן מימושן.</p>
+        <p>לכן, במשך זמן קצר זה, בפועלו לגמרי מתוך רצונו החופשי, הוא חייב לרוקן את נפשו מכל מהלך יומיומי רגיל של מחשבה, וביוזמתו שלו להציב מחשבה בודדת במרכז תודעתו. אין המחשבה צריכה להיות מעניינת או חשובה במיוחד; למעשה תהיה זו מתאימה יותר להשגת המטרה האוקולטית ככל שתהיה דווקא פחות מעניינת ופחות משמעותית. אזי החשיבה נכפית לפעול מתוך האנרגיה של עצמה, שהיא הדבר החשוב כאן, בעוד שמחשבה מעניינת נושאת את החשיבה עמה. טוב יותר אם תרגיל זה של שליטת מחשבה נעשה עם סיכה ולא עם נפוליאון.</p>
+        <p>התלמיד אומר לעצמו: "כעת אני מתחיל מחשבה זו, באמצעות יוזמתי הפנימית שלי אקשור אליה את כל השייך אליה." בסוף משך החשיבה על המחשבה להיות צבעונית ורעננה כפי שהייתה בתחילתה.</p>
+        <p>על התרגיל הזה חוזרים מדי יום במשך חודש לפחות. ניתן לבחור מחשבה חדשה מדי יום, או להישאר עם אותה מחשבה למשך זמן ארוך יותר. בסוף תקופת התרגול יעשה התלמיד מאמץ להיות מודע לגמרי לאותה תחושה פנימית של יציבות ובטחון שתורגש עד מהרה על ידי שימת לב דקה יותר של התלמיד לנפשו. התרגיל מובא אז לסיומו על ידי מיקוד של החשיבה בראש ובאמצע עמוד השדרה, ולהזרים תחושה זו של ביטחון לתוך חלק זה של הגוף.</p>
+      </article>
+
+      <!-- 2 -->
+      <article class="ex" id="ex2" aria-labelledby="ex2-title">
+        <div class="ex-head">
+          <span class="n" aria-hidden="true">2</span>
+          <div>
+            <p class="month">חודש שני</p>
+            <h3 id="ex2-title">יוזמה בפעולה</h3>
+          </div>
+        </div>
+        <div class="gist">
+          <p class="gist-label">בתמצית, לתרגול</p>
+          <dl>
+          <div><dt>התרגול</dt><dd>לבחור פעולה חסרת חשיבות שאינך צריך לעשות (למשל להשקות עציץ), ולבצע אותה כל יום בשעה קבועה. עם הזמן להוסיף פעולה שנייה ושלישית. ממשיכים גם את תרגיל החודש הראשון.</dd></div>
+          <div><dt>התחושה בגוף</dt><dd>דחף פנימי לפעילות: להזרים אותו מטה מהראש אל נקודה שנמצאת בדיוק מעל הלב.</dd></div>
+        </dl>
+        </div>
+        <p>לאחר שהתרגיל הקודם נמשך, נאמר, חודש, תנאי חדש מתווסף אליו. אנו מנסים לחשוב על <em>פעולה</em> מסוימת שבמהלך החיים הרגיל לבטח <em>איננו</em> זקוקים לבצע, ואז אנו הופכים אותה לחובת ביצוע מדי יום ביומו. טוב לכן לבחור פעולה שניתן לבצעה מדי יום, ושתעסיקנו זמן ארוך ככל האפשר. שוב, מוטב לבחור במשהו חסר משמעות שעלינו להכריח את עצמנו לבצע, למשל, להשקות בזמן קבוע עציץ שקנינו. לאחר זמן תצטרף אל הראשונה פעולה שנייה, נוספת, יותר מאוחר שלישית, וכן הלאה: רבות ככל שמאפשרות לנו חובותינו האחרות בחיים.</p>
+        <p>תרגיל זה גם הוא יימשך כחודש. יש להשתדל להמשיך ולבצע את התרגיל הראשון משך החודש השני גם כן. עליו להימשך על אף שאינו מהווה חובה חיונית כל כך כמו בחודש הראשון; אף על פי כן אין להפסיקו, שאם לא כן ייווכח עד מהרה שפירות החודש הראשון אובדים והעצלות של חשיבה לא נשלטת תתחיל שוב. תשומת לב חייבת להינתן לאותם פירות מהרגע שהבשילו, ואז לא יאבדו לעולם.</p>
+        <p>בעזרת התרגיל השני ובשימת לב דקה, אנו הופכים מודעים לתחושה של דחף פנימי, לפעילות בנפש. אנו מזרימים תחושה זו לתוך הגוף, נותנים לה לזרום מטה מהראש אל נקודה המצויה בדיוק מעל ללב.</p>
+      </article>
+
+      <!-- 3 -->
+      <article class="ex" id="ex3" aria-labelledby="ex3-title">
+        <div class="ex-head">
+          <span class="n" aria-hidden="true">3</span>
+          <div>
+            <p class="month">חודש שלישי</p>
+            <h3 id="ex3-title">שוויון נפש</h3>
+          </div>
+        </div>
+        <div class="gist">
+          <p class="gist-label">בתמצית, לתרגול</p>
+          <dl>
+          <div><dt>התרגול</dt><dd>לא להיסחף בשמחה ולא לשקוע בצער; להחליף באופן מודע את הקיצוניות במזג ממותן, מול כל התנסות, כל היום.</dd></div>
+          <div><dt>התחושה בגוף</dt><dd>שלווה פנימית: פעם ביום לפחות לקרוא לה, ולהזרים אותה מהלב לידיים, לכפות הרגליים ולבסוף לראש.</dd></div>
+        </dl>
+        </div>
+        <p>בחודש השלישי החיים צריכים להתמקד בתרגיל חדש: הפיתוח של <em>שוויון נפש</em> מסוים כלפי הטלטולים של שמחה וצער, תענוג וכאב. "גבהים של אקסטזה" ו"עמקים של ייאוש" חייבים באופן מודע להיות מוחלפים במזג ממותן. תשומת לב מוקדשת לכך ששום תענוג לא יסחוף אותנו עמו, ששום צער לא ישקיענו במעמקים, ושום התנסות לא תוליכנו לזעם בלתי מרוסן, לחרדה ופחד, ששום סיטואציה לא תגרום לנו חוסר נחת, וכן הלאה.</p>
+        <p>אין סיבה לחשוש שתרגיל זה יהפוך את החיים ליבשים ובלתי פוריים. נהפוך הוא, ניתן יהיה להיווכח במהירות שההתנסויות בהן מיושם תרגיל זה מצמיחות כישורים עדינים יותר בנפש. ומעל לכל, אם שומרים על תשומת לב דקה, שלווה פנימית בתוך הגוף תורגש יום אחד. כפי שהיה הדבר בשני התרגילים הקודמים, אנו מזרימים תחושה זו לתוך הגוף, מהלב לידיים, לכפות הרגליים ולבסוף לראש.</p>
+        <p>דבר זה לא ניתן, כמובן, להיעשות אחרי כל תרגיל, מכיוון שכאן אין לנו עניין בתרגיל הבודד, כי אם במאמץ המתמיד להיות רגיש לחייה של הנפש. פעם ביום לפחות יש לקרוא תחושה זו של שלווה לפני הנפש, ואחר כך לתרגל את הזרימה מהלב החוצה, כמתואר.</p>
+        <p class="carry">יש לשמור על קשר עם התרגילים של החודשים הראשונים.</p>
+      </article>
+
+      <!-- 4 -->
+      <article class="ex" id="ex4" aria-labelledby="ex4-title">
+        <div class="ex-head">
+          <span class="n" aria-hidden="true">4</span>
+          <div>
+            <p class="month">חודש רביעי</p>
+            <h3 id="ex4-title">גישה חיובית</h3>
+          </div>
+        </div>
+        <div class="gist">
+          <p class="gist-label">בתמצית, לתרגול</p>
+          <dl>
+          <div><dt>התרגול</dt><dd>לחפש בכל תופעה, בכל אדם ובכל התנסות את הטוב, הראוי לשבח והיפה, ולהימנע מביקורת. לשאול "כיצד קרה שזה מתנהג כך?" במקום לחפש אשמה.</dd></div>
+          <div><dt>התחושה בגוף</dt><dd>התעלות והתרוממות רוח: להזרים אותה בחשיבה אל הלב, משם לתוך העיניים, ומשם לחלל שלפני הגוף ומסביבו.</dd></div>
+        </dl>
+        </div>
+        <p>בחודש הרביעי יש לספח תרגיל נוסף, המכונה לעיתים <em>גישה חיובית לחיים</em>. הוא מורכב מחיפוש תמידי של הטוב, הראוי לשבח, היפה, בכל הישויות וההתנסויות. תכונה זו של נפש מתוארת יפה במעשייה הפרסית בדבר אל-עליון. יום אחד, כאשר היה מהלך בחברת תלמידיו, הם ראו לפתע כלב מת מוטל בצד הדרך, במצב של רקבון מתקדם. כל התלמידים הפנו את מבטם הרחק מהמראה הקשה; אל-עליון לבדו לא נע, כי אם הביט מהורהר בגופה ואמר: "אילו שיניים יפות יש לחיה!" מקום בו ראו האחרים רק את הדוחה, הלא נעים, הוא מצא את היפה.</p>
+        <p>כך חייב התלמיד האזוטרי לשאוף לבקש את החיובי בכל תופעה ובכל יצור. הוא ייווכח במהרה שמאחורי המסך של כל דבר דוחה מצוי יופי סמוי, שאפילו מאחורי דמותו של הפושע ישנו טוב חבוי, ושמתחת למסכת המשוגע מסתתרת לעיתים נפש אלוהית.</p>
+        <p>במובן מסוים קשור תרגיל זה למה שמכונה "הימנעות מביקורת". אין להבין דבר זה במובן של כינוי הלבן שחור והשחור לבן. ישנו על כל פנים שוני מהותי בין שיפוט, שבהיותו נובע אך מתוך האישיות של האדם, הינו צבוע לפני ולפנים בסימפטיות ובאנטיפתיות האישיות שלו, ובין מגמה של תודעה שחודרת באהבה לתוך היצור או התופעה הזרה ושואלת תמיד: כיצד קרה הדבר שזה או זה מתנהג כך? מגמה כזו מטבעה שלה תהיה מעוניינת יותר לסייע לפחות מושלם להשלים את עצמו, מאשר סתם לחפש אשמה בכל מקום ולמתוח ביקורת.</p>
+        <p>ההתנגדות שעצם תנאי החיים של אנשים כופים עליהם להאשים ולמתוח ביקורת אינה שייכת לכאן. במקרים אלה, התנאים הם כאלה שהאדם האמור אינו מסוגל לעבור אימון אוקולטי אמיתי. ישנם באמת תנאי חיים רבים שאינם מאפשרים התאמנות אוקולטית מעבר לנקודה מסוימת. במקרה כזה אל לו לאדם להיכשל בחוסר סבלנות, ולמרות הכול עליו לנסות ולהתקדם במסלול שניתן ללכת בו רק בתנאים מסוימים.</p>
+        <p>כל מי שיכוון את תודעתו במשך חודש לגישה חיובית בכל התנסויותיו, ירגיש בהדרגה כיצד תחושה מסוימת חודרת בו, כמו היה עורו הופך למחורר מכל הצדדים, וכמו נפשו נפתחת לכל מיני סוגים של תהליכים רבים ונסתרים סביבו, שעד כה נעלמו ממנו לחלוטין. הנקודה החשובה הינה להילחם בחוסר תשומת הלב הנפוץ לדברים דקים אלה.</p>
+        <p>אם הרגשנו פעם שהתחושה המתוארת מבטאת את עצמה בנפש כהתעלות וכהתרוממות רוח, ייעשו מאמצים להזרים בחשיבה הרגשה זו אל הלב, ומשם להזרימה לתוך העיניים, ומשם לחלל שלפני הגוף ומסביבו. יורגש שיחסים אינטימיים עם החלל הסובב מתחילים להיווצר; האדם צומח מחוץ ומעבר לעצמו, כביכול. הוא לומד להחשיב את עצמו חלק מסביבתו, כמשהו השייך אליו. ריכוז רב דרוש לתרגול זה, ומעל לכל, הכרה בעובדה שלכל הסערות הרגשיות, לכל התשוקות, השפעה הרסנית לחלוטין על מצב הנפש המתואר כאן.</p>
+        <p class="carry">התרגולים של החודשים הראשונים נמשכים כמקודם.</p>
+      </article>
+
+      <!-- 5 -->
+      <article class="ex" id="ex5" aria-labelledby="ex5-title">
+        <div class="ex-head">
+          <span class="n" aria-hidden="true">5</span>
+          <div>
+            <p class="month">חודש חמישי</p>
+            <h3 id="ex5-title">פתיחות תודעה</h3>
+          </div>
+        </div>
+        <div class="gist">
+          <p class="gist-label">בתמצית, לתרגול</p>
+          <dl>
+          <div><dt>התרגול</dt><dd>לפגוש כל התנסות חדשה בלי "מעולם לא שמעתי על כך, זו אשליה". להשאיר תמיד מקום לאפשרות של אמת חדשה, גם כשהיא נראית בלתי אפשרית.</dd></div>
+          <div><dt>התחושה בגוף</dt><dd>תנועה עדינה וחיה במרחב שסביבך: להיות רגיש לה ולאפשר לה לזרום דרך החושים, בעיקר העיניים, האוזניים והעור.</dd></div>
+        </dl>
+        </div>
+        <p>בחודש החמישי ייעשו מאמצים לפתח את ההרגשה של פגישת כל התנסות חדשה מתוך <em>פתיחות תודעה</em> מוחלטת. התלמיד האזוטרי חייב לחדול לגמרי ממהלך הנפש הקובע, מיד בפוגשו או בשומעו דבר מה: "מעולם לא שמעתי על כך, מעולם לא ראיתי דבר כזה לפני כן, אינני מאמין לכך, זוהי אשליה." בכל רגע הוא חייב להיות מוכן לפגוש ולקבל התנסויות חדשות לחלוטין. מה שהוא הכיר עד כה כחוק של טבע, או מה שהוא החשיב כאפשרי, לא צריך להיות כל מכשול לקבלה של אמת חדשה.</p>
+        <p>הגם שהדבר נאמר בחריפות, נכון בהחלט לומר שאם היה מישהו מתייצב לפני התלמיד האזוטרי ואומר: "בליל אמש התעקם הצריח של הכנסייה הסמוכה", התלמיד חייב להשאיר מקום פנוי להנחה האפשרית שידיעת חוקי הטבע שברשותו עשויה להיות מורחבת בדרך כלשהי על ידי עובדה חדשה, בלתי אפשרית לכאורה, כמו זו.</p>
+        <p>אם הוא מפנה את תשומת ליבו בחודש החמישי לפיתוח תודעה כזו, הוא יבחין כיצד מתגנבת לנפשו תחושה כאילו משהו הופך לחי, למתנועע, במרחב שתואר בתרגיל של החודש הרביעי. הרגשה זו הינה דקה ועדינה במיוחד, ומאמצים חייבים להיעשות להיות רגיש לוויברציה קלושה זו בסביבה, ולאפשר לה לזרום, כביכול, דרך כל חמשת החושים, במיוחד דרך העיניים, האוזניים והעור, במידה בה האחרון מכיל את חוש החום.</p>
+        <p>בשלב זה של ההתפתחות האזוטרית יש להפנות פחות תשומת לב לרשמים המתקבלים כגירויים של חושי הריח, הטעם והמגע. בשלב זה עדיין לא ניתן להבחין בין ההשפעות הרעות הרבות שמעורבות בהשפעות הטובות בתחום הזה; התלמיד משאיר זאת לכן לשלב הבא.</p>
+      </article>
+
+      <!-- 6 -->
+      <article class="ex" id="ex6" aria-labelledby="ex6-title">
+        <div class="ex-head">
+          <span class="n" aria-hidden="true">6</span>
+          <div>
+            <p class="month">חודש שישי</p>
+            <h3 id="ex6-title">איזון: חזרה על כל החמישה</h3>
+          </div>
+        </div>
+        <div class="gist">
+          <p class="gist-label">בתמצית, לתרגול</p>
+          <dl>
+          <div><dt>התרגול</dt><dd>לחזור על חמשת התרגילים באופן שיטתי ובתחלופה מסודרת.</dd></div>
+          <div><dt>מה מתפתח</dt><dd>איזון של הנפש: חוסר הסיפוק מן העולם נעלם, ונפתחת הבנה שקטה של דברים שהיו סגורים עד כה.</dd></div>
+        </dl>
+        </div>
+        <p>בחודש השישי ייעשו מאמצים <em>לחזור שוב על כל חמשת התרגילים</em>, באופן שיטתי ובתחלופה מסודרת. בדרך זו איזון נפלא של הנפש יתפתח בהדרגה. במיוחד יושם לב שחוסר סיפוק קודם מתופעות וישויות שונות בעולם ייעלם כליל. מצב נפש של התמזגות כל ההתנסויות יוצר בנפש מצב שבשום פנים איננו של חוסר עניין, כי אם להפך: מאפשר לאדם לראשונה לפעול בעולם למען שיפורו והתקדמותו האמיתיים. אדם משיג הבנה שקטה של דברים שעד כה היו סגורים לפני נפשו.</p>
+      </article>
+
+      <aside class="closing" aria-labelledby="after-title">
+        <h3 id="after-title">אחרי ששת החודשים</h3>
+        <p>התנועות והתנוחות של האדם משתנות כתוצאה מהשפעתם של תרגילים אלה, ואם יום אחד הוא יבחין שצורת כתב ידו השתנתה, אזי הוא יוכל לומר לעצמו שהוא הגיע לבסוף עד לשלב הראשון בשביל העולה.</p>
+        <p>ושוב יש להדגיש שני דברים. הראשון: ששת התרגילים המתוארים משתקים את ההשפעה המזיקה של תרגילים אוקולטיים אחרים, כך שרק המועיל נותר. השני: תרגילים אלה לבדם מבטיחים שתרגילי מדיטציה וריכוז יהיו בעלי השפעה חיובית.</p>
+        <p>אל לו לתלמיד להסתפק במילוי קפדני, ככל שיהיה, אחר הדרישות של מוסריות מוסכמת, מכיוון שסוג זה של מוסריות עשוי להיות אנוכי: אם אדם אומר "אהיה טוב כדי שאיחשב לטוב". התלמיד האזוטרי איננו עושה את הטוב מכיוון שרצונו להיראות טוב, אלא מכיוון שלאט לאט הוא מבין שהטוב לבדו מקדם את ההתפתחות; והרע, האווילי והמכוער מעכבים את התקדמותה.</p>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ PART 2 · TO BE ADDED ═══════════════
+       Add the next set as another <section class="part" id="..."> with the same
+       part-head / months / .ex structure, and turn its entry in nav.parts into a link. -->
+  <div class="wrap">
+    <p class="later">החלק הבא יתווסף בהמשך.</p>
+  </div>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>הטקסט מתוך דף מודפס בתרגום עברי, על פי רודולף שטיינר.</p>
+    <p><a href="https://orenknaan.co.il/">אורן כנען · אחדות</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

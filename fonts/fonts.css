@@ -1,0 +1,60 @@
+/*
+ * Clarity: self-hosted web fonts.
+ *
+ * The same Assistant and Noto Serif Hebrew that used to come from
+ * fonts.googleapis.com, served from this domain instead. Going through
+ * Google meant two sequential round trips before a glyph could be drawn,
+ * one for the stylesheet and one for the font file, and the two families
+ * arrived at different moments. That is what made the headings change
+ * shape twice while the page settled.
+ *
+ * Both are variable fonts, so one file covers every weight the pages ask
+ * for: Google was serving the same file four times over under four
+ * font-weight declarations.
+ *
+ * unicode-range keeps a Hebrew visitor from ever fetching the latin files.
+ * In practice a page load pulls two files, around 26 KB in total.
+ *
+ * Both families are SIL Open Font Licensed, which permits serving them
+ * from here. See OFL-assistant.txt and OFL-noto.txt in this folder.
+ */
+
+/* Assistant · hebrew · variable 200 800 · 7,336 bytes */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('assistant-hebrew.woff2') format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+
+/* Noto Serif Hebrew · hebrew · variable 100 900 · 18,500 bytes */
+@font-face {
+  font-family: 'Noto Serif Hebrew';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('noto-serif-hebrew-hebrew.woff2') format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+
+/* Assistant · latin · variable 200 800 · 22,056 bytes */
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('assistant-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Noto Serif Hebrew · latin · variable 100 900 · 29,184 bytes */
+@font-face {
+  font-family: 'Noto Serif Hebrew';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('noto-serif-hebrew-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
